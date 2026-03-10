@@ -1,4 +1,5 @@
 import argparse
+import logging
 from crawler import run_crawl
 
 
@@ -12,6 +13,10 @@ def parse_args():
 
 
 def main():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    )
     args = parse_args()
     run_crawl(keyword=args.keyword, start_page=args.start, end_page=args.end, headless=args.headless)
 
